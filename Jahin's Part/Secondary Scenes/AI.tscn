@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://chf2rep3dbx27"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wn3v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]
+
+[node name="AI" type="Node3D" unique_id=723610219]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1236869418]
+mesh = SubResource("BoxMesh_0wn3v")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D" unique_id=1573168169]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=868490809]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_0wn3v")
