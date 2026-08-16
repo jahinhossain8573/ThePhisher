@@ -69,3 +69,7 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=2052436978]
+transform = Transform3D(-4.371139e-08, 0.99999374, -0.0035379615, 0, 0.0035379615, 0.99999374, 1, 4.3711115e-08, -1.5464921e-10, 0.013231978, 0.10425956, 0.00012207031)
+progress = 3.192665
