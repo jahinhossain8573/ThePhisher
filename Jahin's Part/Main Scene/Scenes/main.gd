@@ -10,11 +10,11 @@ extends Node3D
 func _physics_process(delta: float) -> void:
 	#Movement
 	if Input.is_action_pressed("move_up"):
-		$Path3D.curve.set_point_position(2, Vector3.UP * reeling_speed + $Path3D.curve.get_point_position(2))
+		$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
 		$Path3D/PathFollow3D.progress_ratio = 1
 	
 	if Input.is_action_pressed("move_down"):
-		$Path3D.curve.set_point_position(2, Vector3.DOWN * reeling_speed + $Path3D.curve.get_point_position(2))
+		$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
 		$Path3D/PathFollow3D.progress_ratio = 1
 		
 	if Input.is_action_pressed("move_left"):
@@ -29,5 +29,6 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	var ai : CharacterBody3D = ai_scene.instantiate()
 	ai_spawn_location.progress_ratio = randf()
-	ai.global_position = ai_spawn_location.position
+	ai.target_node = $Path3D/PathFollow3D/Clickbait
 	add_child(ai)
+	ai.global_position = ai_spawn_location.global_position

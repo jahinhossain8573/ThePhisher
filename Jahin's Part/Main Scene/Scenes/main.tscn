@@ -14,13 +14,6 @@ size = Vector3(59.007782, 0.27062988, 3.5424805)
 [sub_resource type="BoxMesh" id="BoxMesh_mjte6"]
 size = Vector3(46.25255, 1.2719727, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_1lpa2"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00018773973, 3.2975192, 0.00012207031, 0, 0, 0, 0, 0, 0, 0.0053491816, 2.3259487, 0.00012207031, 0, 0, 0, 0, 0, 0, 0.016444564, -0.80117714, 0.00012207031),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
 [sub_resource type="Curve3D" id="Curve3D_i0uh2"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.236542, 2.5364313, -0.00012207031, 0, 0, 0, 0, 0, 0, -9.236542, -5.240698, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.262548, -5.2308154, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.252668, 2.6056051, -0.00012207031),
@@ -28,18 +21,34 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_i0uh2"]
+vertices = PackedVector3Array(-13.086426, 0.53955853, -2.4794393, -13.086426, 0.53955853, 7.5205607, 12.913574, 0.53955853, 7.5205607, 12.913574, 0.53955853, -2.4794393)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_size = 0.5
+cell_height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wn3v"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_1lpa2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0070123672, 0, -1.6730713, 0, 0, 0, 0, 0, 0, 0.0070123672, 0, 0.8126233, 0, 0, 0, 0, 0, 0, -0.011823654, 0, 2.4309096),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="Main" type="Node3D" unique_id=894937722 node_paths=PackedStringArray("ai_spawn_location")]
 script = ExtResource("1_eehcw")
 ai_scene = ExtResource("3_i0uh2")
 ai_spawn_location = NodePath("AI Spawning Periphery/AI Spawn Point")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
-transform = Transform3D(1, 0, -2.504507e-17, 0, 1, 0, 2.504507e-17, 0, 1, -1.8626451e-09, 0, 7.593458)
+transform = Transform3D(1, 0, -2.504507e-17, 2.5044983e-17, -0.0026590037, 0.9999965, -6.6594935e-20, -0.9999965, -0.0026590037, 0, 6.9378805, 0.92527264)
 projection = 1
 size = 15.0
 
 [node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0125885, 3.5158565, -1.4939013)
+transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 5.0125885, -2.1587956, -2.5664082)
 mesh = SubResource("BoxMesh_5tpux")
 
 [node name="Dome Light" type="AreaLight3D" parent="Desk" unique_id=1502058525]
@@ -64,14 +73,35 @@ mesh = SubResource("CapsuleMesh_0wn3v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.606678, -0.31960583, 1.7229133)
 mesh = SubResource("BoxMesh_mjte6")
 
-[node name="Path3D" type="Path3D" parent="." unique_id=586551044]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518579242]
+transform = Transform3D(0.7066282, 0.16913521, 0.68707335, -0.69679195, -0.0026206898, 0.7172685, 0.12311599, -0.9855894, 0.116000205, 0, -0.65555084, 0.94546366)
+
+[node name="AI Spawning Periphery" type="Path3D" parent="." unique_id=79085151]
+transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 0, -0.057840943, 0.94546366)
+curve = SubResource("Curve3D_i0uh2")
+
+[node name="AI Spawn Point" type="PathFollow3D" parent="AI Spawning Periphery" unique_id=1463490199]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -9.236542, 2.5364313, -0.00012207031)
+
+[node name="Timer" type="Timer" parent="." unique_id=258214719]
+wait_time = 5.0
+autostart = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=309683474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.65555084, 0.94546366)
+navigation_mesh = SubResource("NavigationMesh_i0uh2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1051384634]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.030029297, 0.019558787, 2.456901)
+material_override = SubResource("StandardMaterial3D_0wn3v")
+size = Vector3(27.23291, 10.872681, 1)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=984220917]
 curve = SubResource("Curve3D_1lpa2")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=630288928]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5596924)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(0, 0, 0.007669091, 0.10091978, 1.0010345, 0.104797244, 1, 0)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=850277638]
+autosmooth = true
+polygon = PackedVector2Array(0, 0, 0, 1, 0.14054888, 0.98937404, 0.14449996, -0.00051796436)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -83,25 +113,12 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+smooth_faces = true
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=2052436978]
-transform = Transform3D(-4.371139e-08, 0.99999374, -0.0035379615, 0, 0.0035379615, 0.99999374, 1, 4.3711115e-08, -1.5464921e-10, 0.016444566, -0.801177, 0.00012207031)
-progress = 4.098732
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=850310872]
+transform = Transform3D(-0.9999323, 0, 0.011638768, 0, 1, 0, -0.011638768, 0, -0.9999323, -0.011823654, 0, 2.4309096)
+progress = 4.10409
 
 [node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 instance=ExtResource("2_1lpa2")]
-transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0.99999386, 0.003537962, 4.371112e-08, -0.003537962, 0.99999386, -1.5464922e-10, 1.4551915e-11, 1.17346644e-07, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518579242]
-transform = Transform3D(0.7066282, 0.16913521, 0.68707335, -0.12126276, 0.98559284, -0.11790701, -0.69711685, 0, 0.7169575, 0, 0, 0)
-
-[node name="AI Spawning Periphery" type="Path3D" parent="." unique_id=79085151]
-curve = SubResource("Curve3D_i0uh2")
-
-[node name="AI Spawn Point" type="PathFollow3D" parent="AI Spawning Periphery" unique_id=1463490199]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -9.236542, 2.5364313, -0.00012207031)
-
-[node name="Timer" type="Timer" parent="." unique_id=258214719]
-wait_time = 5.0
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
