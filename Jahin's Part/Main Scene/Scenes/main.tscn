@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0cvgk3i11mke"]
 
 [ext_resource type="Script" uid="uid://bpt856kqh1l8a" path="res://Jahin's Part/Main Scene/Scenes/main.gd" id="1_eehcw"]
+[ext_resource type="PackedScene" uid="uid://d3s8gfefe7hbv" path="res://Jahin's Part/Secondary Scenes/clickbait.tscn" id="2_1lpa2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
 size = Vector3(59.007782, 0.27062988, 3.5424805)
@@ -33,6 +34,7 @@ mesh = SubResource("BoxMesh_5tpux")
 
 [node name="Dome Light" type="AreaLight3D" parent="Desk" unique_id=1502058525]
 transform = Transform3D(1, 0, 0, 0, 0.6454075, 0.7638385, 0, -0.7638385, 0.6454075, -16.985207, 1.3219512, 4.7775445)
+visible = false
 light_energy = 11.297
 area_size = Vector2(37.589058, 1)
 
@@ -71,5 +73,11 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=2052436978]
-transform = Transform3D(-4.371139e-08, 0.99999374, -0.0035379615, 0, 0.0035379615, 0.99999374, 1, 4.3711115e-08, -1.5464921e-10, 0.013231978, 0.10425956, 0.00012207031)
-progress = 3.192665
+transform = Transform3D(-4.371139e-08, 0.99999374, -0.0035379615, 0, 0.0035379615, 0.99999374, 1, 4.3711115e-08, -1.5464921e-10, 0.016444566, -0.801177, 0.00012207031)
+progress = 4.098732
+
+[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 instance=ExtResource("2_1lpa2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0.99999374, 0.0035379615, 4.3711115e-08, -0.0035379615, 0.99999374, -1.5464921e-10, -0.00012206974, -0.013600761, -0.10421209)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518579242]
+transform = Transform3D(0.7066282, 0.16913521, 0.68707335, -0.12126276, 0.98559284, -0.11790701, -0.69711685, 0, 0.7169575, 0, 0, 0)
