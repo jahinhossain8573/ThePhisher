@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b0cvgk3i11mke"]
 
+[ext_resource type="Script" uid="uid://bpt856kqh1l8a" path="res://Jahin's Part/Main Scene/Scenes/main.gd" id="1_eehcw"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
 size = Vector3(59.007782, 0.27062988, 3.5424805)
 
@@ -10,14 +12,15 @@ size = Vector3(59.007782, 0.27062988, 3.5424805)
 [sub_resource type="BoxMesh" id="BoxMesh_mjte6"]
 size = Vector3(46.25255, 1.2719727, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_5tpux"]
+[sub_resource type="Curve3D" id="Curve3D_1lpa2"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.05512297, -0.019756079, 0, 0, 0, 0, 0, 0, 0, 0.008465409, -2.834912, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00018773973, 3.2975192, 0.00012207031, 0, 0, 0, 0, 0, 0, 0.0053491816, 2.3259487, 0.00012207031, 0, 0, 0, 0, 0, 0, 0.016444564, -0.80117714, 0.00012207031),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [node name="Main" type="Node3D" unique_id=894937722]
+script = ExtResource("1_eehcw")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
 transform = Transform3D(55.093857, 0, 0, 0, 55.093857, 0, 0, 0, 55.093857, 0, 0, 7.593458)
@@ -49,9 +52,20 @@ mesh = SubResource("CapsuleMesh_0wn3v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.606678, -0.31960583, 1.7229133)
 mesh = SubResource("BoxMesh_mjte6")
 
-[node name="Path3D" type="Path3D" parent="." unique_id=1027014987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7670941, 0)
-curve = SubResource("Curve3D_5tpux")
+[node name="Path3D" type="Path3D" parent="." unique_id=586551044]
+curve = SubResource("Curve3D_1lpa2")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1999769360]
-transform = Transform3D(-1.0726368e-07, 0.9998627, 0.016568692, 2.501803e-09, -0.01656869, 0.99986273, 1, 1.0729041e-07, -7.2424056e-10, 0.05512297, -0.019756079, 0)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=630288928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5596924)
+polygon = PackedVector2Array(0, 0, 0.007669091, 0.10091978, 1.0010345, 0.104797244, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
