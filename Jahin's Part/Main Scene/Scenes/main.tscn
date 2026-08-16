@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpt856kqh1l8a" path="res://Jahin's Part/Main Scene/Scenes/main.gd" id="1_eehcw"]
 [ext_resource type="PackedScene" uid="uid://d3s8gfefe7hbv" path="res://Jahin's Part/Secondary Scenes/clickbait.tscn" id="2_1lpa2"]
+[ext_resource type="PackedScene" uid="uid://chf2rep3dbx27" path="res://Jahin's Part/Secondary Scenes/AI.tscn" id="3_i0uh2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
 size = Vector3(59.007782, 0.27062988, 3.5424805)
@@ -20,13 +21,22 @@ _data = {
 }
 point_count = 3
 
-[node name="Main" type="Node3D" unique_id=894937722]
+[sub_resource type="Curve3D" id="Curve3D_i0uh2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.236542, 2.5364313, -0.00012207031, 0, 0, 0, 0, 0, 0, -9.236542, -5.240698, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.262548, -5.2308154, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.252668, 2.6056051, -0.00012207031),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Main" type="Node3D" unique_id=894937722 node_paths=PackedStringArray("ai_spawn_location")]
 script = ExtResource("1_eehcw")
+ai_scene = ExtResource("3_i0uh2")
+ai_spawn_location = NodePath("AI Spawning Periphery/AI Spawn Point")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
-transform = Transform3D(55.093857, 0, 0, 0, 55.093857, 0, 0, 0, 55.093857, 0, 0, 7.593458)
+transform = Transform3D(1, 0, -2.504507e-17, 0, 1, 0, 2.504507e-17, 0, 1, -1.8626451e-09, 0, 7.593458)
 projection = 1
-size = 10.346
+size = 15.0
 
 [node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0125885, 3.5158565, -1.4939013)
@@ -59,6 +69,8 @@ curve = SubResource("Curve3D_1lpa2")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=630288928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5596924)
+use_collision = true
+collision_mask = 2
 polygon = PackedVector2Array(0, 0, 0.007669091, 0.10091978, 1.0010345, 0.104797244, 1, 0)
 mode = 2
 path_node = NodePath("..")
@@ -77,7 +89,19 @@ transform = Transform3D(-4.371139e-08, 0.99999374, -0.0035379615, 0, 0.003537961
 progress = 4.098732
 
 [node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 instance=ExtResource("2_1lpa2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0.99999374, 0.0035379615, 4.3711115e-08, -0.0035379615, 0.99999374, -1.5464921e-10, -0.00012206974, -0.013600761, -0.10421209)
+transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0.99999386, 0.003537962, 4.371112e-08, -0.003537962, 0.99999386, -1.5464922e-10, 1.4551915e-11, 1.17346644e-07, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518579242]
 transform = Transform3D(0.7066282, 0.16913521, 0.68707335, -0.12126276, 0.98559284, -0.11790701, -0.69711685, 0, 0.7169575, 0, 0, 0)
+
+[node name="AI Spawning Periphery" type="Path3D" parent="." unique_id=79085151]
+curve = SubResource("Curve3D_i0uh2")
+
+[node name="AI Spawn Point" type="PathFollow3D" parent="AI Spawning Periphery" unique_id=1463490199]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -9.236542, 2.5364313, -0.00012207031)
+
+[node name="Timer" type="Timer" parent="." unique_id=258214719]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

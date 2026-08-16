@@ -45,6 +45,11 @@ move_right={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Clickbait"
+3d_physics/layer_2="AI"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
