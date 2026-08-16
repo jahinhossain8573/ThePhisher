@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b0cvgk3i11mke"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
+size = Vector3(59.007782, 0.27062988, 3.5424805)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5n18k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0wn3v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjte6"]
+size = Vector3(46.25255, 1.2719727, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_5tpux"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.05512297, -0.019756079, 0, 0, 0, 0, 0, 0, 0, 0.008465409, -2.834912, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Main" type="Node3D" unique_id=894937722]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
+transform = Transform3D(55.093857, 0, 0, 0, 55.093857, 0, 0, 0, 55.093857, 0, 0, 7.593458)
+projection = 1
+size = 10.346
+
+[node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0125885, 3.5158565, -1.4939013)
+mesh = SubResource("BoxMesh_5tpux")
+
+[node name="Dome Light" type="AreaLight3D" parent="Desk" unique_id=1502058525]
+transform = Transform3D(1, 0, 0, 0, 0.6454075, 0.7638385, 0, -0.7638385, 0.6454075, -16.985207, 1.3219512, 4.7775445)
+light_energy = 11.297
+area_size = Vector2(37.589058, 1)
+
+[node name="Screen Glare" type="AreaLight3D" parent="Desk" unique_id=1879507544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.792603, 0, -1.0065541)
+light_energy = 11.297
+
+[node name="Monitor" type="MeshInstance3D" parent="Desk" unique_id=66758528]
+transform = Transform3D(0.97584975, 0, -0.2184425, 0, 1, 0, 0.2184425, 0, 0.97584975, -5.3559604, 0.55479455, 0)
+mesh = SubResource("BoxMesh_5n18k")
+
+[node name="The Phisher" type="MeshInstance3D" parent="Desk" unique_id=1617230501]
+transform = Transform3D(0.97584975, 0, -0.2184425, 0, 1, 0, 0.2184425, 0, 0.97584975, -4.3559604, 0.55479455, -2.7364411)
+mesh = SubResource("CapsuleMesh_0wn3v")
+
+[node name="Divider" type="MeshInstance3D" parent="Desk" unique_id=39420026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.606678, -0.31960583, 1.7229133)
+mesh = SubResource("BoxMesh_mjte6")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1027014987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7670941, 0)
+curve = SubResource("Curve3D_5tpux")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1999769360]
+transform = Transform3D(-1.0726368e-07, 0.9998627, 0.016568692, 2.501803e-09, -0.01656869, 0.99986273, 1, 1.0729041e-07, -7.2424056e-10, 0.05512297, -0.019756079, 0)
