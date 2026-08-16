@@ -27,8 +27,18 @@ func _physics_process(delta: float) -> void:
 	
 #AI Spawning
 func _on_timer_timeout() -> void:
+	#AI Scene Instantiation
 	var ai : CharacterBody3D = ai_scene.instantiate()
+	
+	#Randomizes the Spawn Position
 	ai_spawn_location.progress_ratio = randf()
-	ai.target_node = $Path3D/PathFollow3D/Clickbait
+	
+	#Selects the node to which the AI moves
+	var assembly_points : Array[Node] = $"AI Manager".get_children()
+	ai.target_node = assembly_points[randi_range(0, $"AI Manager".get_child_count()-1)]
+	
+	#Adds in the AI Scene as a node in the scene tree
 	add_child(ai)
+	
+	#Sets the position of the AI
 	ai.global_position = ai_spawn_location.global_position

@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://wcepcrdxhelv" path="res://Jahin's Part/Secondary Scenes/ai.gd" id="1_vet6d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]
+radius = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wn3v"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="AI" type="CharacterBody3D" unique_id=740061542]
 script = ExtResource("1_vet6d")
