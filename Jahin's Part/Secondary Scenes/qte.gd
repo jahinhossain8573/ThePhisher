@@ -1,5 +1,8 @@
 extends Control
 
+signal QuickTimeSuccess
+signal QuickTimeFailure
+
 #Slider Speed
 @export var slider_speed : float = 2.5
 
@@ -32,5 +35,9 @@ func _physics_process(delta: float) -> void:
 		slider_bar.global_position.x -= slider_speed
 	
 	if Input.is_action_just_pressed("interaction"):
-		if  slider_bar.global_position.x >= trigger_zone_start_marker.global_position.x and slider_bar.global_position.x <= trigger_zone_end_marker.global_position.x:
+		if slider_bar.global_position.x >= trigger_zone_start_marker.global_position.x and slider_bar.global_position.x <= trigger_zone_end_marker.global_position.x:
 			print("Superb")
+			QuickTimeSuccess.emit()
+		else:
+			print("Wrong Click")
+			QuickTimeFailure.emit()

@@ -26,6 +26,13 @@ offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="InteractionZone" type="ColorRect" parent="Panel" unique_id=1016160135]
+layout_mode = 0
+offset_left = 233.5
+offset_right = 345.5
+offset_bottom = 21.0
+color = Color(1, 0, 0, 1)
+
 [node name="StartMarker" type="Marker2D" parent="Panel" unique_id=1305412396]
 position = Vector2(31.37, 46)
 
@@ -43,13 +50,6 @@ layout_mode = 0
 offset_right = 576.5
 offset_bottom = 21.0
 color = Color(0, 0.7430131, 0.40815595, 1)
-
-[node name="InteractionZone" type="ColorRect" parent="Panel/FullBar" unique_id=1016160135]
-layout_mode = 0
-offset_left = 233.5
-offset_right = 345.5
-offset_bottom = 21.0
-color = Color(1, 0, 0, 1)
 
 [node name="SliderBar" type="Sprite2D" parent="Panel" unique_id=1395976521]
 position = Vector2(296.5, 11.499997)
