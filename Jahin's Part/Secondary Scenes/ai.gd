@@ -1,25 +1,37 @@
 extends CharacterBody3D
 
+class_name AI
+
+# Movement Target
 @export var target_node : Node3D = null
 
+# AI Category
 @export var ai_type : int = randi_range(0,6)
 
+# Navigation Agent
 @onready var nav_mesh : NavigationAgent3D = $NavigationAgent3D
 
+# AI State of Motion
 var is_moving : bool = true
+
+# Initial Position
+var initial_position : Vector3 = Vector3.ZERO
+
+# Clickbait Detection State
+var is_detected_clickbait = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Intialize Target Position
+	# Intialize Target Position
 	nav_mesh.target_position = target_node.global_position
 	
-	#Randomize Target Position
+	# Randomize Target Position
 	nav_mesh.target_position.x += randf() * 2 * (-1) ** randi_range(1, 2)
-	#nav_mesh.target_position.y += randf() * 10
 	nav_mesh.target_position.z += randf() * 2 * (-1) ** randi_range(1, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	# AI Movement
 	if is_moving:
 		var next_point : Vector3 = nav_mesh.get_next_path_position()
 		var direction : Vector3 = (next_point - global_position).normalized()
@@ -29,3 +41,10 @@ func _physics_process(delta: float) -> void:
 func _on_navigation_agent_3d_navigation_finished() -> void:
 	velocity = Vector3.ZERO
 	is_moving = false
+	if is_detected_clickbait:
+		queue_free()
+
+func _detected_clickbait():
+	nav_mesh.target_position = initial_position
+	is_moving = true
+	is_detected_clickbait = true

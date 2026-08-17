@@ -2,22 +2,32 @@
 
 [ext_resource type="Script" uid="uid://wcepcrdxhelv" path="res://Jahin's Part/Secondary Scenes/ai.gd" id="1_vet6d"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]
-radius = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo1jp"]
+size = Vector3(0.099853516, 0.101623535, 0.10076904)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wn3v"]
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]
+radius = 0.2
+
 [node name="AI" type="CharacterBody3D" unique_id=740061542]
+collision_layer = 2
 script = ExtResource("1_vet6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2060815345]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("SphereShape3D_0wn3v")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0007324219, -0.0004272461, -0.0004272461)
+shape = SubResource("BoxShape3D_bo1jp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=881045235]
 mesh = SubResource("BoxMesh_0wn3v")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1410450871]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2048069382]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=785995115]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_0wn3v")
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]

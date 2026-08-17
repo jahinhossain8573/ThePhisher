@@ -19,12 +19,14 @@ var enabled : bool = false
 @onready var panel: Panel = $Panel
 @onready var slider_bar: Sprite2D = $Panel/SliderBar
 
+# AI Array from Clickbait
+var ai_array : Array[Node3D] = []
+
 #Slider Direction
 var is_moving_right : bool = true
 
 func _ready() -> void:
 	disable()
-
 
 func _physics_process(delta: float) -> void:
 	if enabled:

@@ -124,8 +124,9 @@ smooth_faces = true
 transform = Transform3D(-0.9999355, 0, 0.011107337, 0, 1, 0, -0.011107337, 0, -0.9999355, -0.011823654, 0, 1.4844834)
 progress = 4.10409
 
-[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 instance=ExtResource("2_1lpa2")]
+[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 node_paths=PackedStringArray("qte") instance=ExtResource("2_1lpa2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10727569, 0.21539995, -0.0012515783)
+qte = NodePath("Minigame/SubViewport/QTE")
 
 [node name="Minigame" type="Sprite3D" parent="Path3D/PathFollow3D/Clickbait" unique_id=1971641493]
 transform = Transform3D(-0.3199803, -0.0035543577, 1.553659e-10, 0, -1.3987644e-08, -0.32, 0.0035543577, -0.3199803, 1.3986781e-08, -0.0015765727, 0, -0.6025549)
@@ -164,3 +165,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3315873, 0, -0.4905523)
 assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="QuickTimeFailure" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_failure"]
+[connection signal="QuickTimeSuccess" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_success"]

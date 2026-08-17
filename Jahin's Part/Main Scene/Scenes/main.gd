@@ -7,6 +7,9 @@ extends Node3D
 @export var ai_scene : PackedScene = null
 @export var ai_spawn_location : PathFollow3D = null
 
+func _process(delta: float) -> void:
+	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
+
 func _physics_process(delta: float) -> void:
 	#Movement
 	if Input.is_action_pressed("move_up"):
@@ -42,3 +45,11 @@ func _on_timer_timeout() -> void:
 	
 	#Sets the position of the AI
 	ai.global_position = ai_spawn_location.global_position
+	ai.global_position.y = 0.215
+	ai.initial_position = ai.global_position
+
+func _on_qte_quick_time_success() -> void:
+	$Path3D/PathFollow3D/Clickbait.successful_qt()
+
+func _on_qte_quick_time_failure() -> void:
+	$Path3D/PathFollow3D/Clickbait.unsuccessful_qt()
