@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Phisher"
-run/main_scene="uid://b0cvgk3i11mke"
+run/main_scene="uid://cc8qc4r7u0lgv"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

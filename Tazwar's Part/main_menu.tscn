@@ -1,15 +1,42 @@
 [gd_scene format=3 uid="uid://cc8qc4r7u0lgv"]
 
+[ext_resource type="Script" uid="uid://ckqfdw5xbumfg" path="res://Tazwar's Part/main_menu.gd" id="1_0bsmj"]
+[ext_resource type="FontFile" uid="uid://djhvwkf3y4ftg" path="res://Tazwar's Part/VENITEADOREMUSSTRAIGHT-YZO6V.TTF" id="1_0xji3"]
+
 [sub_resource type="FontVariation" id="FontVariation_eb6mp"]
+base_font = ExtResource("1_0xji3")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofrac"]
-bg_color = Color(1.92523e-07, 0.54665774, 0.81170774, 1)
-corner_radius_top_left = 17
-corner_radius_top_right = 17
-corner_radius_bottom_right = 17
-corner_radius_bottom_left = 17
+bg_color = Color(0, 0.5630023, 0.8376254, 1)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 20
 shadow_size = 1
 shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xji3"]
+bg_color = Color(0, 0.22403234, 0.34802648, 1)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 20
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bsmj"]
+bg_color = Color(0, 0.37550464, 0.5650051, 1)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 20
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cifrf"]
+
+[sub_resource type="FontVariation" id="FontVariation_v6vr7"]
+base_font = ExtResource("1_0xji3")
 
 [node name="MainMenu" type="Control" unique_id=358598764]
 layout_mode = 3
@@ -18,45 +45,83 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0bsmj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1020320989]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -205.0
-offset_top = -156.125
-offset_right = 205.0
-offset_bottom = 156.125
-grow_horizontal = 2
+offset_left = 351.0
+offset_top = -49.0
+offset_right = 761.0
+offset_bottom = 263.25
 grow_vertical = 2
 theme_override_constants/separation = 22
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=990828687]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_eb6mp")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ofrac")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0xji3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0bsmj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cifrf")
 text = "Phish"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1238150796]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_eb6mp")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ofrac")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0xji3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0bsmj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cifrf")
 text = "Options"
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=408780510]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_eb6mp")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ofrac")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0xji3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0bsmj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cifrf")
 text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1341271485]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 292.0
+offset_right = 1093.0
+offset_bottom = 444.0
+theme_override_fonts/font = SubResource("FontVariation_v6vr7")
+theme_override_font_sizes/font_size = 104
+text = "The Phisher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
