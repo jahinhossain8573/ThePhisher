@@ -40,7 +40,7 @@ _data = {
 point_count = 3
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jkuvi"]
-viewport_path = NodePath("Sprite3D/SubViewport")
+viewport_path = NodePath("Path3D/PathFollow3D/Clickbait/Minigame/SubViewport")
 
 [node name="Main" type="Node3D" unique_id=894937722 node_paths=PackedStringArray("ai_spawn_location")]
 script = ExtResource("1_eehcw")
@@ -127,6 +127,15 @@ progress = 4.10409
 [node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 instance=ExtResource("2_1lpa2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10727569, 0.21539995, -0.0012515783)
 
+[node name="Minigame" type="Sprite3D" parent="Path3D/PathFollow3D/Clickbait" unique_id=1971641493]
+transform = Transform3D(-0.3199803, -0.0035543577, 1.553659e-10, 0, -1.3987644e-08, -0.32, 0.0035543577, -0.3199803, 1.3986781e-08, -0.0015765727, 0, -0.6025549)
+texture = SubResource("ViewportTexture_jkuvi")
+
+[node name="SubViewport" type="SubViewport" parent="Path3D/PathFollow3D/Clickbait/Minigame" unique_id=1440306141]
+transparent_bg = true
+
+[node name="QTE" parent="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport" unique_id=64287262 instance=ExtResource("5_jkuvi")]
+
 [node name="AI Manager" type="Node3D" parent="." unique_id=1686914240]
 visible = false
 
@@ -153,14 +162,5 @@ assembly_points = Array[int]([0, 0, 1, 2, 2, 2])
 [node name="AI Assembly Point 5" parent="AI Manager" unique_id=726262503 instance=ExtResource("4_csu50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3315873, 0, -0.4905523)
 assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1971641493]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.3642486, 5.0720587)
-texture = SubResource("ViewportTexture_jkuvi")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1440306141]
-transparent_bg = true
-
-[node name="QTE" parent="Sprite3D/SubViewport" unique_id=64287262 instance=ExtResource("5_jkuvi")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
