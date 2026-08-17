@@ -20,7 +20,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -288.5
-offset_top = -49.0
+offset_top = 26.0
 offset_right = 288.5
 offset_bottom = 49.0
 grow_horizontal = 2
@@ -38,13 +38,20 @@ position = Vector2(232.5, 54)
 [node name="TriggerZoneEndMarker" type="Marker2D" parent="Panel" unique_id=1017908112]
 position = Vector2(345.50006, 55)
 
-[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=893882554]
+[node name="FullBar" type="ColorRect" parent="Panel" unique_id=893882554]
 layout_mode = 0
 offset_right = 576.5
-offset_bottom = 101.0
+offset_bottom = 21.0
 color = Color(0, 0.7430131, 0.40815595, 1)
 
+[node name="InteractionZone" type="ColorRect" parent="Panel/FullBar" unique_id=1016160135]
+layout_mode = 0
+offset_left = 233.5
+offset_right = 345.5
+offset_bottom = 21.0
+color = Color(1, 0, 0, 1)
+
 [node name="SliderBar" type="Sprite2D" parent="Panel" unique_id=1395976521]
-position = Vector2(296.5, 51.00006)
-scale = Vector2(0.07150002, 0.0715)
+position = Vector2(296.5, 11.499997)
+scale = Vector2(0.07150002, 0.025500026)
 texture = ExtResource("1_ghe0t")
