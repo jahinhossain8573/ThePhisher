@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c45d5xn8retkf"]
+
+[ext_resource type="Texture2D" uid="uid://du02n288qlodl" path="res://Jahin's Part/Assets/UI/Slider Bar/Slider Bar.png" id="1_ghe0t"]
+[ext_resource type="Script" uid="uid://c6dg7k07d88tj" path="res://Jahin's Part/Secondary Scenes/qte.gd" id="1_idk24"]
+
+[node name="QTE" type="Control" unique_id=64287262]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idk24")
+
+[node name="Panel" type="Panel" parent="." unique_id=436281723]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.5
+offset_top = -49.0
+offset_right = 288.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMarker" type="Marker2D" parent="Panel" unique_id=1305412396]
+position = Vector2(31.37, 46)
+
+[node name="EndMarker" type="Marker2D" parent="Panel" unique_id=1955771231]
+position = Vector2(546, 49)
+
+[node name="TriggerZoneStartMarker" type="Marker2D" parent="Panel" unique_id=966684790]
+position = Vector2(232.5, 54)
+
+[node name="TriggerZoneEndMarker" type="Marker2D" parent="Panel" unique_id=1017908112]
+position = Vector2(345.50006, 55)
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=893882554]
+layout_mode = 0
+offset_right = 576.5
+offset_bottom = 101.0
+color = Color(0, 0.7430131, 0.40815595, 1)
+
+[node name="SliderBar" type="Sprite2D" parent="Panel" unique_id=1395976521]
+position = Vector2(296.5, 51.00006)
+scale = Vector2(0.07150002, 0.0715)
+texture = ExtResource("1_ghe0t")
