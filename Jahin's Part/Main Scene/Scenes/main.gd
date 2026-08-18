@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	#Movement
-
 	if can_move:
 		if Input.is_action_pressed("move_up"):
 			$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
@@ -60,7 +59,7 @@ func _physics_process(delta: float) -> void:
 #AI Spawning
 func _on_timer_timeout() -> void:
 	#AI Scene Instantiation
-	var ai : CharacterBody3D = ai_scene.instantiate()
+	var ai : AI = ai_scene.instantiate()
 	
 	#Randomizes the Spawn Position
 	ai_spawn_location.progress_ratio = randf()
@@ -76,6 +75,8 @@ func _on_timer_timeout() -> void:
 	ai.global_position = ai_spawn_location.global_position
 	ai.global_position.y = 0.215
 	ai.initial_position = ai.global_position
+	
+	print(ai.ai_type)
 
 func _on_qte_quick_time_success() -> void:
 	$Path3D/PathFollow3D/Clickbait.successful_qt()
