@@ -7,6 +7,10 @@ extends Node3D
 @export var ai_scene : PackedScene = null
 @export var ai_spawn_location : PathFollow3D = null
 
+@onready var clickbait : Clickbait = $Path3D/PathFollow3D/Clickbait
+
+var can_move : bool = false
+
 func _ready() -> void:
 	$Path3D/PathFollow3D/Clickbait.initial_position = $Path3D.curve.get_point_position(2)
 
@@ -15,22 +19,44 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	#Movement
-	if Input.is_action_pressed("move_up"):
-		$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
-		$Path3D/PathFollow3D.progress_ratio = 1
-	
-	if Input.is_action_pressed("move_down"):
-		$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
-		$Path3D/PathFollow3D.progress_ratio = 1
+
+	if can_move:
+		if Input.is_action_pressed("move_up"):
+			$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
+			$Path3D/PathFollow3D.progress_ratio = 1
 		
-	if Input.is_action_pressed("move_left"):
-		$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
-		$Path3D/PathFollow3D.progress_ratio = 1
+		if Input.is_action_pressed("move_down"):
+			$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
+			$Path3D/PathFollow3D.progress_ratio = 1
+			
+		if Input.is_action_pressed("move_left"):
+			$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
+			$Path3D/PathFollow3D.progress_ratio = 1
+			
+		if Input.is_action_pressed("move_right"):
+			$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
+			$Path3D/PathFollow3D.progress_ratio = 1
+			
+	else:
+		if Input.is_action_just_pressed("move_up"):
+			if clickbait.type >= 5:
+				clickbait.type = 0
+			else:
+				clickbait.type += 1
+			clickbait.type_change()
+			#print(clickbait.type)
+			
+		if Input.is_action_just_pressed("move_down"):
+			if clickbait.type <= 0:
+				clickbait.type = 5
+			else:
+				clickbait.type -= 1
+			clickbait.type_change()
+			#print(clickbait.type)
 		
-	if Input.is_action_pressed("move_right"):
-		$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
-		$Path3D/PathFollow3D.progress_ratio = 1
-	
+		if Input.is_action_just_pressed("select"):
+			can_move = true
+
 #AI Spawning
 func _on_timer_timeout() -> void:
 	#AI Scene Instantiation
@@ -55,8 +81,10 @@ func _on_qte_quick_time_success() -> void:
 	$Path3D/PathFollow3D/Clickbait.successful_qt()
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
+		can_move = false
 
 func _on_qte_quick_time_failure() -> void:
 	$Path3D/PathFollow3D/Clickbait.unsuccessful_qt()
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
+		can_move = false
