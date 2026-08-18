@@ -21,13 +21,13 @@ var can_enable_qte : bool = false
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is AI:
 		if body.is_moving == false:
-			print("entered")
+			#print("entered")
 			ai_array.append(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is AI:
 		if body.is_moving == false:
-			print("exited")
+			#print("exited")
 			ai_array.erase(body)
 
 func _process(delta: float) -> void:
@@ -47,7 +47,7 @@ func successful_qt():
 	ai_array.remove_at(0)
 
 func unsuccessful_qt():
-	print("No!")
+	#print("No!")
 	ai_array[0]._detected_clickbait()
 	ai_array.remove_at(0)
 

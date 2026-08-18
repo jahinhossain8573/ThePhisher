@@ -6,6 +6,7 @@
 size = Vector3(0.099853516, 0.101623535, 0.10076904)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wn3v"]
+resource_local_to_scene = true
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]

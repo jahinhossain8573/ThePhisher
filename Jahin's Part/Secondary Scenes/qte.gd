@@ -44,10 +44,10 @@ func _physics_process(delta: float) -> void:
 	
 		if Input.is_action_just_pressed("interaction"):
 			if slider_bar.global_position.x >= trigger_zone_start_marker.global_position.x and slider_bar.global_position.x <= trigger_zone_end_marker.global_position.x:
-				print("Superb")
+				#print("Superb")
 				QuickTimeSuccess.emit()
 			else:
-				print("Wrong Click")
+				#print("Wrong Click")
 				QuickTimeFailure.emit()
 
 	

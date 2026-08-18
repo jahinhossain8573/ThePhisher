@@ -11,7 +11,12 @@ extends Node3D
 
 var can_move : bool = false
 
+var score : int = 0
+
 func _ready() -> void:
+	GameManager.load_game()
+	score = GameManager.high_score
+	print(score)
 	$Path3D/PathFollow3D/Clickbait.initial_position = $Path3D.curve.get_point_position(2)
 
 func _process(delta: float) -> void:
@@ -76,16 +81,24 @@ func _on_timer_timeout() -> void:
 	ai.global_position.y = 0.215
 	ai.initial_position = ai.global_position
 	
-	print(ai.ai_type)
+	#print(ai.ai_type)
 
 func _on_qte_quick_time_success() -> void:
 	$Path3D/PathFollow3D/Clickbait.successful_qt()
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
+	score -= 5
+	if score > GameManager.high_score:
+		GameManager.high_score = score
+		GameManager.save_game()
 
 func _on_qte_quick_time_failure() -> void:
 	$Path3D/PathFollow3D/Clickbait.unsuccessful_qt()
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
+	score += 15
+	if score > GameManager.high_score:
+		GameManager.high_score = score
+		GameManager.save_game()
