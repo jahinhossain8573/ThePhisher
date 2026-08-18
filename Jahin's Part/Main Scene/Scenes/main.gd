@@ -7,6 +7,9 @@ extends Node3D
 @export var ai_scene : PackedScene = null
 @export var ai_spawn_location : PathFollow3D = null
 
+func _ready() -> void:
+	$Path3D/PathFollow3D/Clickbait.initial_position = $Path3D.curve.get_point_position(2)
+
 func _process(delta: float) -> void:
 	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
 
@@ -50,6 +53,10 @@ func _on_timer_timeout() -> void:
 
 func _on_qte_quick_time_success() -> void:
 	$Path3D/PathFollow3D/Clickbait.successful_qt()
+	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
+		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 
 func _on_qte_quick_time_failure() -> void:
 	$Path3D/PathFollow3D/Clickbait.unsuccessful_qt()
+	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
+		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)

@@ -1,17 +1,21 @@
 extends Node3D
 
 # Gets the minigame
-@export var qte : Node = null
+@export var qte : qte = null
+
+var initial_position : Vector3 = Vector3.ZERO
 
 # AI Array
-var ai_array : Array[Node3D]
+var ai_array : Array[AI]
+
+# Ability to enable QTE
+var can_enable_qte : bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is AI:
 		if body.is_moving == false:
 			print("entered")
 			ai_array.append(body)
-
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is AI:
@@ -23,7 +27,11 @@ func _process(delta: float) -> void:
 	qte.ai_array = ai_array
 	if ai_array.size() == 0:
 		qte.disable()
+		can_enable_qte = false
 	else:
+		can_enable_qte = true
+		#qte.enable()
+	if Input.is_action_just_pressed("interaction") and can_enable_qte:
 		qte.enable()
 
 func successful_qt():

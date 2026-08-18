@@ -1,5 +1,7 @@
 extends Control
 
+class_name qte
+
 signal QuickTimeSuccess
 signal QuickTimeFailure
 
@@ -20,7 +22,7 @@ var enabled : bool = false
 @onready var slider_bar: Sprite2D = $Panel/SliderBar
 
 # AI Array from Clickbait
-var ai_array : Array[Node3D] = []
+var ai_array : Array[AI] = []
 
 #Slider Direction
 var is_moving_right : bool = true
