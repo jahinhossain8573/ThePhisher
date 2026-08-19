@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://b0cvgk3i11mke"]
+
+[ext_resource type="Script" uid="uid://bpt856kqh1l8a" path="res://Jahin's Part/Main Scene/Scenes/main.gd" id="1_eehcw"]
+[ext_resource type="PackedScene" uid="uid://d3s8gfefe7hbv" path="res://Jahin's Part/Secondary Scenes/clickbait.tscn" id="2_1lpa2"]
+[ext_resource type="PackedScene" uid="uid://chf2rep3dbx27" path="res://Jahin's Part/Secondary Scenes/AI.tscn" id="3_i0uh2"]
+[ext_resource type="PackedScene" uid="uid://bmygc33hwyyco" path="res://Jahin's Part/Secondary Scenes/UI/Gameplay UI.tscn" id="3_qxrgb"]
+[ext_resource type="PackedScene" uid="uid://3twd55h3wbpl" path="res://Jahin's Part/Secondary Scenes/AI Assembly Point.tscn" id="4_csu50"]
+[ext_resource type="PackedScene" uid="uid://c45d5xn8retkf" path="res://Jahin's Part/Secondary Scenes/QTE.tscn" id="5_jkuvi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0wn3v"]
+viewport_path = NodePath("Camera3D/UI Manager/Sprite3D/SubViewport")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
+size = Vector3(59.007782, 0.27062988, 3.5424805)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5n18k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0wn3v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjte6"]
+size = Vector3(46.25255, 1.2719727, 2.5935059)
+
+[sub_resource type="Curve3D" id="Curve3D_i0uh2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.236542, 2.5364313, -0.00012207031, 0, 0, 0, 0, 0, 0, -9.236542, -5.240698, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.262548, -5.2308154, -0.00012207031, 0, 0, 0, 0, 0, 0, 9.252668, 2.6056051, -0.00012207031),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_i0uh2"]
+vertices = PackedVector3Array(-13.086426, 0.53955853, -2.4794393, -13.086426, 0.53955853, 7.5205607, 12.913574, 0.53955853, 7.5205607, 12.913574, 0.53955853, -2.4794393)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_size = 0.5
+cell_height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wn3v"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_1lpa2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0070123672, 0, -1.6730713, 0, 0, 0, 0, 0, 0, 0.0070123672, 0, -0.21123785, 0, 0, 0, 0, 0, 0, -0.011823654, 0, 1.4844832),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jkuvi"]
+viewport_path = NodePath("Path3D/PathFollow3D/Clickbait/Minigame/SubViewport")
+
+[node name="Main" type="Node3D" unique_id=894937722 node_paths=PackedStringArray("ai_spawn_location")]
+script = ExtResource("1_eehcw")
+ai_scene = ExtResource("3_i0uh2")
+ai_spawn_location = NodePath("AI Spawning Periphery/AI Spawn Point")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
+transform = Transform3D(1, 0, -2.504507e-17, 2.5044983e-17, -0.0026590037, 0.9999965, -6.6594935e-20, -0.9999965, -0.0026590037, 0, 6.9378805, 0.92527264)
+projection = 1
+size = 10.0
+
+[node name="UI Manager" type="Node3D" parent="Camera3D" unique_id=1467302717]
+transform = Transform3D(1, 0, 8.331356e-24, 0, 1, 0, 5.952429e-26, 0, 1, -5.0527306, -6.142664, -6.9542384)
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D/UI Manager" unique_id=1741738636]
+texture = SubResource("ViewportTexture_0wn3v")
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/UI Manager/Sprite3D" unique_id=181780928]
+transparent_bg = true
+
+[node name="GameplayUI" parent="Camera3D/UI Manager/Sprite3D/SubViewport" unique_id=1272889730 instance=ExtResource("3_qxrgb")]
+
+[node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
+transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 5.0125885, -2.1587956, -2.5664082)
+mesh = SubResource("BoxMesh_5tpux")
+
+[node name="Dome Light" type="AreaLight3D" parent="Desk" unique_id=1502058525]
+transform = Transform3D(1, 0, 0, 0, 0.6454075, 0.7638385, 0, -0.7638385, 0.6454075, -16.985207, 1.3219512, 4.7775445)
+visible = false
+light_energy = 11.297
+area_size = Vector2(37.589058, 1)
+
+[node name="Screen Glare" type="AreaLight3D" parent="Desk" unique_id=1879507544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.792603, 0, -1.0065541)
+light_energy = 11.297
+
+[node name="Monitor" type="MeshInstance3D" parent="Desk" unique_id=66758528]
+transform = Transform3D(0.97584975, 0, -0.2184425, 0, 1, 0, 0.2184425, 0, 0.97584975, -5.3559604, 0.55479455, 0)
+mesh = SubResource("BoxMesh_5n18k")
+
+[node name="The Phisher" type="MeshInstance3D" parent="Desk" unique_id=1617230501]
+transform = Transform3D(0.97584975, 0, -0.2184425, 0, 1, 0, 0.2184425, 0, 0.97584975, -4.3559604, 0.55479455, -2.7364411)
+mesh = SubResource("CapsuleMesh_0wn3v")
+
+[node name="Divider" type="MeshInstance3D" parent="Desk" unique_id=39420026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.606678, -0.31960487, 2.5196667)
+mesh = SubResource("BoxMesh_mjte6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518579242]
+transform = Transform3D(0.7066282, 0.16913521, 0.68707335, -0.69679195, -0.0026206898, 0.7172685, 0.12311599, -0.9855894, 0.116000205, 0, -0.65555084, 0.94546366)
+
+[node name="AI Spawning Periphery" type="Path3D" parent="." unique_id=79085151]
+transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 0, -0.057840943, 0.94546366)
+curve = SubResource("Curve3D_i0uh2")
+
+[node name="AI Spawn Point" type="PathFollow3D" parent="AI Spawning Periphery" unique_id=1463490199]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -9.236542, 2.5364313, -0.00012207031)
+
+[node name="Timer" type="Timer" parent="." unique_id=258214719]
+autostart = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=309683474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.65555084, 0.94546366)
+navigation_mesh = SubResource("NavigationMesh_i0uh2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1051384634]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.030029297, 0.019558787, 2.456901)
+material_override = SubResource("StandardMaterial3D_0wn3v")
+size = Vector3(27.23291, 10.872681, 1)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=984220917]
+curve = SubResource("Curve3D_1lpa2")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=850277638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72629035, 0)
+autosmooth = true
+polygon = PackedVector2Array(0.08807872, -0.0058644414, 0.07608619, 0.96544445, 0.13803165, 0.97000325, 0.14449996, -0.00051796436)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=850310872]
+transform = Transform3D(-0.9999355, 0, 0.011107337, 0, 1, 0, -0.011107337, 0, -0.9999355, -0.011823654, 0, 1.4844834)
+progress = 4.10409
+
+[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 node_paths=PackedStringArray("qte") instance=ExtResource("2_1lpa2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10727569, 0.21539995, -0.0012515783)
+qte = NodePath("Minigame/SubViewport/QTE")
+
+[node name="Minigame" type="Sprite3D" parent="Path3D/PathFollow3D/Clickbait" unique_id=1971641493]
+transform = Transform3D(-0.3199803, -0.0035543577, 1.553659e-10, 0, -1.3987644e-08, -0.32, 0.0035543577, -0.3199803, 1.3986781e-08, -0.0015765727, 0, -0.6025549)
+texture = SubResource("ViewportTexture_jkuvi")
+
+[node name="SubViewport" type="SubViewport" parent="Path3D/PathFollow3D/Clickbait/Minigame" unique_id=1440306141]
+transparent_bg = true
+
+[node name="QTE" parent="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport" unique_id=64287262 instance=ExtResource("5_jkuvi")]
+
+[node name="AI Manager" type="Node3D" parent="." unique_id=1686914240]
+visible = false
+
+[node name="AI Assembly Point 0" parent="AI Manager" unique_id=1689755366 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5858526, 9.536743e-07, 3.6095545)
+assembly_points = Array[int]([0, 0, 0, 1, 1, 2])
+
+[node name="AI Assembly Point 1" parent="AI Manager" unique_id=950329880 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7330132, -9.536743e-07, 4.1953025)
+assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
+
+[node name="AI Assembly Point 2" parent="AI Manager" unique_id=1121818349 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1507077, 0, 0.20612937)
+assembly_points = Array[int]([0, 0, 1, 2, 2, 2])
+
+[node name="AI Assembly Point 3" parent="AI Manager" unique_id=2050814509 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3830814, 0, 3.9196346)
+assembly_points = Array[int]([0, 0, 0, 1, 1, 2])
+
+[node name="AI Assembly Point 4" parent="AI Manager" unique_id=1883612398 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.220927, 0, 0.9452903)
+assembly_points = Array[int]([0, 0, 1, 2, 2, 2])
+
+[node name="AI Assembly Point 5" parent="AI Manager" unique_id=726262503 instance=ExtResource("4_csu50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3315873, 0, -0.4905523)
+assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="QuickTimeFailure" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_failure"]
+[connection signal="QuickTimeSuccess" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_success"]
