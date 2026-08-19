@@ -17,6 +17,9 @@ var enabled : bool = false
 @onready var trigger_zone_start_marker: Marker2D = $Panel/TriggerZoneStartMarker
 @onready var trigger_zone_end_marker: Marker2D = $Panel/TriggerZoneEndMarker
 
+#InteractionZone ColorRect
+@onready var interaction_zone: ColorRect = $Panel/InteractionZone
+
 # Declaring Panel and Slider as variables
 @onready var panel: Panel = $Panel
 @onready var slider_bar: Sprite2D = $Panel/SliderBar
@@ -24,12 +27,20 @@ var enabled : bool = false
 # AI Array from Clickbait
 var ai_array : Array[AI] = []
 
-#Slider Direction
+# Slider Direction
 var is_moving_right : bool = true
+
+# QTE Bar Length
+var qte_bar_length : int = 0
+
+# Trigger Zone Length
+var trigger_zone_length : int = 0
 
 func _ready() -> void:
 	disable()
+	qte_bar_length = end_marker.global_position.x - start_marker.global_position.x
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if enabled:
 		if slider_bar.global_position.x >= end_marker.global_position.x:
@@ -50,10 +61,13 @@ func _physics_process(delta: float) -> void:
 				#print("Wrong Click")
 				QuickTimeFailure.emit()
 
-	
 func enable():
 	visible = true
 	enabled = true
+	trigger_zone_length = randi_range(qte_bar_length/15, qte_bar_length/2)
+	trigger_zone_start_marker.global_position.x = randi_range(start_marker.global_position.x, start_marker.global_position.x+qte_bar_length-trigger_zone_length)
+	interaction_zone.global_position.x = trigger_zone_start_marker.global_position.x
+	interaction_zone.size.x = trigger_zone_length
 
 func disable():
 	visible = false
