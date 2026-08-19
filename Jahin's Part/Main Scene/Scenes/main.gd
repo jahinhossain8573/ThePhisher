@@ -13,17 +13,14 @@ var can_move : bool = false
 
 var score : int = 0
 
-@onready var gameplay_ui: GameplayUI = $"Camera3D/UI Manager/Sprite3D/SubViewport/GameplayUI"
-
 func _ready() -> void:
 	GameManager.load_game()
+	score = GameManager.high_score
 	print(score)
 	$Path3D/PathFollow3D/Clickbait.initial_position = $Path3D.curve.get_point_position(2)
 
 func _process(delta: float) -> void:
 	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
-	gameplay_ui.score.text = "Score: " + str(score)
-	gameplay_ui.high_score.text = "High Score: " + str(GameManager.high_score)
 
 func _physics_process(delta: float) -> void:
 	#Movement
@@ -91,7 +88,7 @@ func _on_qte_quick_time_success() -> void:
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
-	score += 15
+	score -= 5
 	if score > GameManager.high_score:
 		GameManager.high_score = score
 		GameManager.save_game()
@@ -101,7 +98,7 @@ func _on_qte_quick_time_failure() -> void:
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
-	score -= 5
+	score += 15
 	if score > GameManager.high_score:
 		GameManager.high_score = score
 		GameManager.save_game()
