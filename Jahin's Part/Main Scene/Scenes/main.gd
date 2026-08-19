@@ -28,22 +28,22 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	#Movement
 	if can_move:
-		if Input.is_action_pressed("move_up"):
-			$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
-			$Path3D/PathFollow3D.progress_ratio = 1
-		
-		if Input.is_action_pressed("move_down"):
-			$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
-			$Path3D/PathFollow3D.progress_ratio = 1
+		if $Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE.enabled == false:
+			if Input.is_action_pressed("move_up"):
+				$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
+				$Path3D/PathFollow3D.progress_ratio = 1
 			
-		if Input.is_action_pressed("move_left"):
-			$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
-			$Path3D/PathFollow3D.progress_ratio = 1
-			
-		if Input.is_action_pressed("move_right"):
-			$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
-			$Path3D/PathFollow3D.progress_ratio = 1
-			
+			if Input.is_action_pressed("move_down"):
+				$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
+				$Path3D/PathFollow3D.progress_ratio = 1
+				
+			if Input.is_action_pressed("move_left"):
+				$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
+				$Path3D/PathFollow3D.progress_ratio = 1
+				
+			if Input.is_action_pressed("move_right"):
+				$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
+				$Path3D/PathFollow3D.progress_ratio = 1
 	else:
 		if Input.is_action_just_pressed("move_up"):
 			if clickbait.type >= 5:

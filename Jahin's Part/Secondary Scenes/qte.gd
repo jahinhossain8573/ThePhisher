@@ -64,7 +64,14 @@ func _physics_process(delta: float) -> void:
 func enable():
 	visible = true
 	enabled = true
-	trigger_zone_length = randi_range(qte_bar_length/15, qte_bar_length/2)
+	match ai_array[0].ai_type:
+		0:
+			trigger_zone_length = randi_range(qte_bar_length/4, qte_bar_length/2)
+		1:
+			trigger_zone_length = randi_range(qte_bar_length/5, qte_bar_length/8)
+		2:
+			trigger_zone_length = randi_range(qte_bar_length/15, qte_bar_length/10)
+	
 	trigger_zone_start_marker.global_position.x = randi_range(start_marker.global_position.x, start_marker.global_position.x+qte_bar_length-trigger_zone_length)
 	interaction_zone.global_position.x = trigger_zone_start_marker.global_position.x
 	interaction_zone.size.x = trigger_zone_length
