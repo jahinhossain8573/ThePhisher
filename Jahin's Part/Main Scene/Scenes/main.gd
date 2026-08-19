@@ -22,8 +22,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
-	gameplay_ui.score.text = "Score: " + str(score)
-	gameplay_ui.high_score.text = "High Score: " + str(GameManager.high_score)
+	gameplay_ui.label.text = "Score: " + str(score) + "\nHigh Score: " + str(GameManager.high_score)
 
 func _physics_process(delta: float) -> void:
 	#Movement
