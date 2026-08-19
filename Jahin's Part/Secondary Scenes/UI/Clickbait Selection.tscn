@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cn0d3evsp4oii"]
+
+[ext_resource type="Texture2D" uid="uid://ba25gca44jg4c" path="res://Jahin's Part/Secondary Scenes/UI/Elements/73-736259_curved-white-arrow-png-transparent-background-white-arrow.png" id="1_wsn6n"]
+
+[node name="ClickbaitSelection" type="Control" unique_id=233694335]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1981138441]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1460991233]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Select
+Clickbait"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=927040693]
+layout_mode = 2
+
+[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" type="Sprite2D" parent="HBoxContainer/VBoxContainer" unique_id=1071964248]
+position = Vector2(48.090023, 12.253469)
+scale = Vector2(0.012790698, 0.019003233)
+texture = ExtResource("1_wsn6n")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=52874498]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 383.87872
+offset_top = -1710.602
+offset_right = 1896.8787
+offset_bottom = 469.39795
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1600
+text = "W"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=174366160]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 696.59937
+offset_top = -289.7929
+offset_right = 1576.5994
+offset_bottom = 1890.207
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1600
+text = "S"
+
+[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow2" type="Sprite2D" parent="HBoxContainer/VBoxContainer" unique_id=853541405]
+position = Vector2(48.09003, 38.723957)
+scale = Vector2(-0.013, -0.019)
+texture = ExtResource("1_wsn6n")

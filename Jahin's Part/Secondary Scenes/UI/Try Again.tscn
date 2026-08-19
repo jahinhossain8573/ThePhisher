@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://caqtwgbsflm12"]
+
+[ext_resource type="Script" uid="uid://bryey7c2gld21" path="res://Jahin's Part/Secondary Scenes/UI/try_again.gd" id="1_i3giw"]
+
+[node name="TryAgain" type="Control" unique_id=2115166697]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3giw")
+
+[node name="Label" type="Label" parent="." unique_id=616100468]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -122.0
+offset_right = 364.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Try Again"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1613354568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -956.0
+offset_top = -552.5
+offset_right = 956.0
+offset_bottom = 552.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

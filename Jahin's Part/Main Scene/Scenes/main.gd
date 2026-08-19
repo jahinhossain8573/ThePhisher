@@ -100,7 +100,12 @@ func _on_qte_quick_time_failure() -> void:
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
-	score -= 5
+	if score <= 0:
+		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
+		can_move = false
+		$AnimationPlayer.play("Try Again")
+	else:
+		score -= 5
 	if score > GameManager.high_score:
 		GameManager.high_score = score
 		GameManager.save_game()
