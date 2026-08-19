@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
-	$Path3D/PathFollow3D/Clickbait/Minigame.global_position.y = clickbait.global_position.y - 0.01
+	$Path3D/PathFollow3D/Clickbait/Minigame.global_position.z = clickbait.global_position.z + 0.4
 	gameplay_ui.label.text = "Score: " + str(score) + "\nHigh Score: " + str(GameManager.high_score)
 
 func _physics_process(delta: float) -> void:
@@ -63,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("select"):
 			can_move = true
+			$AnimationPlayer.play("Clickbait Select Start")
 
 #AI Spawning
 func _on_timer_timeout() -> void:
@@ -91,6 +92,7 @@ func _on_qte_quick_time_success() -> void:
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
+		$AnimationPlayer.play("Clickbait Select Start")
 	score += 15
 	if score > GameManager.high_score:
 		GameManager.high_score = score
@@ -101,10 +103,12 @@ func _on_qte_quick_time_failure() -> void:
 	if $Path3D/PathFollow3D/Clickbait.ai_array.size() == 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
+		$AnimationPlayer.play_backwards("Clickbait Select Start")
 	if score <= 0:
 		$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
 		can_move = false
-		$AnimationPlayer.play("Try Again")
+		$AnimationPlayer.play_backwards("Try Again")
+		$AnimationPlayer.play_backwards("Clickbait Select Start")
 	else:
 		score -= 5
 	if score > GameManager.high_score:

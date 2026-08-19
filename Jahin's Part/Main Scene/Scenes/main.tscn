@@ -54,8 +54,24 @@ point_count = 3
 [sub_resource type="ViewportTexture" id="ViewportTexture_jkuvi"]
 viewport_path = NodePath("Path3D/PathFollow3D/Clickbait/Minigame/SubViewport")
 
+[sub_resource type="Animation" id="Animation_rey2a"]
+resource_name = "clickbait_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/UI Manager/Sprite3D3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_tnanf"]
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,6 +83,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/UI Manager/Sprite3D3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_yd5p6"]
@@ -87,6 +115,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rey2a"]
 _data = {
+&"Clickbait Select Start": SubResource("Animation_rey2a"),
 &"RESET": SubResource("Animation_tnanf"),
 &"Try Again": SubResource("Animation_yd5p6")
 }
