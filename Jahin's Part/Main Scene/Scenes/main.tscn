@@ -3,12 +3,8 @@
 [ext_resource type="Script" uid="uid://bpt856kqh1l8a" path="res://Jahin's Part/Main Scene/Scenes/main.gd" id="1_eehcw"]
 [ext_resource type="PackedScene" uid="uid://d3s8gfefe7hbv" path="res://Jahin's Part/Secondary Scenes/clickbait.tscn" id="2_1lpa2"]
 [ext_resource type="PackedScene" uid="uid://chf2rep3dbx27" path="res://Jahin's Part/Secondary Scenes/AI.tscn" id="3_i0uh2"]
-[ext_resource type="PackedScene" uid="uid://bmygc33hwyyco" path="res://Jahin's Part/Secondary Scenes/UI/Gameplay UI.tscn" id="3_qxrgb"]
 [ext_resource type="PackedScene" uid="uid://3twd55h3wbpl" path="res://Jahin's Part/Secondary Scenes/AI Assembly Point.tscn" id="4_csu50"]
 [ext_resource type="PackedScene" uid="uid://c45d5xn8retkf" path="res://Jahin's Part/Secondary Scenes/QTE.tscn" id="5_jkuvi"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0wn3v"]
-viewport_path = NodePath("Camera3D/UI Manager/Sprite3D/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
 size = Vector3(59.007782, 0.27062988, 3.5424805)
@@ -58,14 +54,6 @@ size = 10.0
 
 [node name="UI Manager" type="Node3D" parent="Camera3D" unique_id=1467302717]
 transform = Transform3D(1, 0, 8.331356e-24, 0, 1, 0, 5.952429e-26, 0, 1, -5.0527306, -6.142664, -6.9542384)
-
-[node name="Sprite3D" type="Sprite3D" parent="Camera3D/UI Manager" unique_id=1741738636]
-texture = SubResource("ViewportTexture_0wn3v")
-
-[node name="SubViewport" type="SubViewport" parent="Camera3D/UI Manager/Sprite3D" unique_id=181780928]
-transparent_bg = true
-
-[node name="GameplayUI" parent="Camera3D/UI Manager/Sprite3D/SubViewport" unique_id=1272889730 instance=ExtResource("3_qxrgb")]
 
 [node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
 transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 5.0125885, -2.1587956, -2.5664082)
