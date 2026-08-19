@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://caqtwgbsflm12" path="res://Jahin's Part/Secondary Scenes/UI/Try Again.tscn" id="4_tnanf"]
 [ext_resource type="PackedScene" uid="uid://c45d5xn8retkf" path="res://Jahin's Part/Secondary Scenes/QTE.tscn" id="5_jkuvi"]
 [ext_resource type="PackedScene" uid="uid://cn0d3evsp4oii" path="res://Jahin's Part/Secondary Scenes/UI/Clickbait Selection.tscn" id="5_yd5p6"]
+[ext_resource type="PackedScene" uid="uid://bwvmtqemchcm5" path="res://Jahin's Part/Secondary Scenes/UI/session_end.tscn" id="6_rey2a"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0wn3v"]
 viewport_path = NodePath("Camera3D/UI Manager/Sprite3D/SubViewport")
@@ -17,6 +18,9 @@ viewport_path = NodePath("Camera3D/UI Manager/Sprite3D2/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mjte6"]
 viewport_path = NodePath("Camera3D/UI Manager/Sprite3D3/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rey2a"]
+viewport_path = NodePath("Camera3D/UI Manager/Sprite3D4/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tpux"]
 size = Vector3(59.007782, 0.27062988, 3.5424805)
@@ -96,6 +100,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/UI Manager/Sprite3D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgjpa"]
+resource_name = "Session Timeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/UI Manager/Sprite3D4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_yd5p6"]
 resource_name = "Try Again"
@@ -117,6 +149,7 @@ tracks/0/keys = {
 _data = {
 &"Clickbait Select Start": SubResource("Animation_rey2a"),
 &"RESET": SubResource("Animation_tnanf"),
+&"Session Timeout": SubResource("Animation_rgjpa"),
 &"Try Again": SubResource("Animation_yd5p6")
 }
 
@@ -124,6 +157,15 @@ _data = {
 script = ExtResource("1_eehcw")
 ai_scene = ExtResource("3_i0uh2")
 ai_spawn_location = NodePath("AI Spawning Periphery/AI Spawn Point")
+
+[node name="SessionTimer" type="Timer" parent="." unique_id=562501601]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="SessionTimeoutTimer" type="Timer" parent="SessionTimer" unique_id=204103395]
+wait_time = 5.0
+one_shot = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1454364098]
 transform = Transform3D(1, 0, -2.504507e-17, 2.5044983e-17, -0.0026590037, 0.9999965, -6.6594935e-20, -0.9999965, -0.0026590037, 0, 6.9378805, 0.92527264)
@@ -159,6 +201,22 @@ texture = SubResource("ViewportTexture_mjte6")
 transparent_bg = true
 
 [node name="ClickbaitSelection" parent="Camera3D/UI Manager/Sprite3D3/SubViewport" unique_id=233694335 instance=ExtResource("5_yd5p6")]
+
+[node name="Sprite3D4" type="TextureRect" parent="Camera3D/UI Manager" unique_id=1059147053]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rey2a")
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/UI Manager/Sprite3D4" unique_id=727312123]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="SessionEnd" parent="Camera3D/UI Manager/Sprite3D4/SubViewport" unique_id=1458225762 instance=ExtResource("6_rey2a")]
 
 [node name="Desk" type="MeshInstance3D" parent="." unique_id=478285491]
 transform = Transform3D(1, 0, 0, 0, -0.0026590037, 0.9999965, 0, -0.9999965, -0.0026590037, 5.0125885, -2.1587956, -2.5664082)
@@ -275,6 +333,8 @@ assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1972434594]
 libraries/ = SubResource("AnimationLibrary_rey2a")
 
+[connection signal="timeout" from="SessionTimer" to="." method="_on_session_timer_timeout"]
+[connection signal="timeout" from="SessionTimer/SessionTimeoutTimer" to="." method="_on_session_timeout_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="QuickTimeFailure" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_failure"]
 [connection signal="QuickTimeSuccess" from="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE" to="." method="_on_qte_quick_time_success"]

@@ -13,12 +13,18 @@ var can_move : bool = false
 
 var score : int = 0
 
+var input_accept : bool = true
+
 @onready var gameplay_ui: GameplayUI = $"Camera3D/UI Manager/Sprite3D/SubViewport/GameplayUI"
+
+@onready var session_timeout_timer: Timer = $SessionTimer/SessionTimeoutTimer
+
 
 func _ready() -> void:
 	GameManager.load_game()
 	print(score)
 	$Path3D/PathFollow3D/Clickbait.initial_position = $Path3D.curve.get_point_position(2)
+	
 
 func _process(delta: float) -> void:
 	$Path3D/PathFollow3D/Clickbait/Minigame.global_rotation.y = 0
@@ -27,43 +33,44 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	#Movement
-	if can_move:
-		if $Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE.enabled == false:
-			if Input.is_action_pressed("move_up"):
-				$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
-				$Path3D/PathFollow3D.progress_ratio = 1
-			
-			if Input.is_action_pressed("move_down"):
-				$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
-				$Path3D/PathFollow3D.progress_ratio = 1
+	if input_accept:
+		if can_move:
+			if $Path3D/PathFollow3D/Clickbait/Minigame/SubViewport/QTE.enabled == false:
+				if Input.is_action_pressed("move_up"):
+					$Path3D.curve.set_point_position(2, Vector3.FORWARD * reeling_speed + $Path3D.curve.get_point_position(2))
+					$Path3D/PathFollow3D.progress_ratio = 1
 				
-			if Input.is_action_pressed("move_left"):
-				$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
-				$Path3D/PathFollow3D.progress_ratio = 1
+				if Input.is_action_pressed("move_down"):
+					$Path3D.curve.set_point_position(2, Vector3.BACK * reeling_speed + $Path3D.curve.get_point_position(2))
+					$Path3D/PathFollow3D.progress_ratio = 1
+					
+				if Input.is_action_pressed("move_left"):
+					$Path3D.curve.set_point_position(2, Vector3.LEFT * reeling_speed + $Path3D.curve.get_point_position(2))
+					$Path3D/PathFollow3D.progress_ratio = 1
+					
+				if Input.is_action_pressed("move_right"):
+					$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
+					$Path3D/PathFollow3D.progress_ratio = 1
+		else:
+			if Input.is_action_just_pressed("move_up"):
+				if clickbait.type >= 5:
+					clickbait.type = 0
+				else:
+					clickbait.type += 1
+				clickbait.type_change()
+				#print(clickbait.type)
 				
-			if Input.is_action_pressed("move_right"):
-				$Path3D.curve.set_point_position(2, Vector3.RIGHT * reeling_speed + $Path3D.curve.get_point_position(2))
-				$Path3D/PathFollow3D.progress_ratio = 1
-	else:
-		if Input.is_action_just_pressed("move_up"):
-			if clickbait.type >= 5:
-				clickbait.type = 0
-			else:
-				clickbait.type += 1
-			clickbait.type_change()
-			#print(clickbait.type)
+			if Input.is_action_just_pressed("move_down"):
+				if clickbait.type <= 0:
+					clickbait.type = 5
+				else:
+					clickbait.type -= 1
+				clickbait.type_change()
+				#print(clickbait.type)
 			
-		if Input.is_action_just_pressed("move_down"):
-			if clickbait.type <= 0:
-				clickbait.type = 5
-			else:
-				clickbait.type -= 1
-			clickbait.type_change()
-			#print(clickbait.type)
-		
-		if Input.is_action_just_pressed("select"):
-			can_move = true
-			$AnimationPlayer.play("Clickbait Select Start")
+			if Input.is_action_just_pressed("select"):
+				can_move = true
+				$AnimationPlayer.play("Clickbait Select Start")
 
 #AI Spawning
 func _on_timer_timeout() -> void:
@@ -114,3 +121,19 @@ func _on_qte_quick_time_failure() -> void:
 	if score > GameManager.high_score:
 		GameManager.high_score = score
 		GameManager.save_game()
+
+
+func _on_session_timer_timeout() -> void:
+	
+	$Path3D.curve.set_point_position(2, $Path3D/PathFollow3D/Clickbait.initial_position)
+	can_move = false
+	input_accept = false
+	session_timeout_timer.start()
+	$AnimationPlayer.play("Session Timeout")
+
+func _on_session_timeout_timer_timeout() -> void:
+	input_accept = true
+	$AnimationPlayer.play("Clickbait Select Start")
+	$AnimationPlayer.play_backwards("Session Timeout")
+	await $AnimationPlayer.animation_finished
+	get_tree().reload_current_scene()
