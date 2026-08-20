@@ -1,76 +1,94 @@
 [gd_scene format=3 uid="uid://cn0d3evsp4oii"]
 
-[ext_resource type="Texture2D" uid="uid://ba25gca44jg4c" path="res://Jahin's Part/Secondary Scenes/UI/Elements/73-736259_curved-white-arrow-png-transparent-background-white-arrow.png" id="1_wsn6n"]
+[ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="1_76ni2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dpff1"]
+line_spacing = -2.93
+font = ExtResource("1_76ni2")
+font_color = Color(0.22745098, 1, 0.53333336, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wsn6n"]
+load_path = "res://.godot/imported/Arrow.png-7e03ed20b1e5808a92409ad106e6095c.ctex"
 
 [node name="ClickbaitSelection" type="Control" unique_id=233694335]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1981138441]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=1460991233]
-layout_mode = 2
+[node name="Label" type="Label" parent="." unique_id=1460991233]
+layout_mode = 0
+offset_left = -658.5
+offset_top = -358.0
+offset_right = -613.5
+offset_bottom = -330.0
 size_flags_horizontal = 4
 text = "Select
 Clickbait"
+label_settings = SubResource("LabelSettings_dpff1")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=927040693]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=735412298]
+layout_mode = 0
+offset_left = -1594.0
+offset_top = -884.0
+offset_right = -1554.0
+offset_bottom = -844.0
 
-[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" type="Sprite2D" parent="HBoxContainer/VBoxContainer" unique_id=1071964248]
-position = Vector2(48.090023, 12.253469)
-scale = Vector2(0.012790698, 0.019003233)
-texture = ExtResource("1_wsn6n")
+[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" type="Sprite2D" parent="VBoxContainer" unique_id=1071964248]
+position = Vector2(1035, 512)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_wsn6n")
+flip_v = true
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=52874498]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 383.87872
-offset_top = -1710.602
-offset_right = 1896.8787
-offset_bottom = 469.39795
+[node name="Label2" type="Label" parent="VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=52874498]
+anchors_preset = -1
+anchor_left = 0.50551564
+anchor_top = 0.47616062
+anchor_right = 0.5055155
+anchor_bottom = 0.4761606
+offset_left = -0.55156326
+offset_top = -91.61606
+offset_right = 1512.4489
+offset_bottom = 2088.384
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 1600
+scale = Vector2(0.9939561, 1)
+theme_override_colors/font_color = Color(0.22745098, 1, 0.53333336, 1)
+theme_override_fonts/font = ExtResource("1_76ni2")
+theme_override_font_sizes/font_size = 100
 text = "W"
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=174366160]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 696.59937
-offset_top = -289.7929
-offset_right = 1576.5994
-offset_bottom = 1890.207
+[node name="Label3" type="Label" parent="VBoxContainer/73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow" unique_id=1433927610]
+anchors_preset = -1
+anchor_left = 0.50551564
+anchor_top = 0.5178273
+anchor_right = 0.5055157
+anchor_bottom = 0.5178272
+offset_left = -0.55156326
+offset_top = -5.7827263
+offset_right = 1512.4489
+offset_bottom = 2174.2173
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 1600
-text = "S"
+scale = Vector2(0.9939561, 1)
+theme_override_colors/font_color = Color(0.22745098, 1, 0.53333336, 1)
+theme_override_fonts/font = ExtResource("1_76ni2")
+theme_override_font_sizes/font_size = 100
+text = "S
+"
 
-[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow2" type="Sprite2D" parent="HBoxContainer/VBoxContainer" unique_id=853541405]
-position = Vector2(48.09003, 38.723957)
-scale = Vector2(-0.013, -0.019)
-texture = ExtResource("1_wsn6n")
+[node name="73736259CurvedWhiteArrowPngTransparentBackgroundWhiteArrow2" type="Sprite2D" parent="VBoxContainer" unique_id=934717261]
+position = Vector2(1035, 553)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_wsn6n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=757611933]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

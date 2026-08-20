@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://4uv3pa5g6hxl"]
+
+[ext_resource type="PackedScene" uid="uid://dfms3aaoi0gjq" path="res://Jahin's Part/Art/3D Assets/CRT Monitor/Retro Pc.glb" id="1_l0c3y"]
+[ext_resource type="Material" uid="uid://buk8x5j6nm4uo" path="res://Jahin's Part/Art/3D Assets/CRT Monitor/Materials/PC_Front Cream.tres" id="2_y3kjs"]
+
+[node name="Retro Pc" unique_id=1662325500 instance=ExtResource("1_l0c3y")]
+
+[node name="PC_004_007" parent="." index="4" unique_id=294308650]
+surface_material_override/0 = ExtResource("2_y3kjs")

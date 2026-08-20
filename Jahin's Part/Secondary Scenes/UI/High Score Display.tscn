@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cnhb8w1gp5ijf"]
+
+[ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="1_uycsm"]
+[ext_resource type="Script" uid="uid://oqsj55f8jgty" path="res://Jahin's Part/Secondary Scenes/UI/high_score_display.gd" id="1_xml22"]
+
+[node name="HighScoreDisplay" type="Control" unique_id=22726282]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xml22")
+
+[node name="Label" type="Label" parent="." unique_id=89657782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.22352941, 1, 0.5294118, 1)
+theme_override_fonts/font = ExtResource("1_uycsm")
+theme_override_font_sizes/font_size = 60
+text = "High Score:
+"

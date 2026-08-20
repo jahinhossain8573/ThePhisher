@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bwvmtqemchcm5"]
 
+[ext_resource type="Script" uid="uid://drwe3p4m5tmaa" path="res://Jahin's Part/Secondary Scenes/UI/session_end.gd" id="1_uv781"]
+[ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="2_5auei"]
+
 [node name="SessionEnd" type="Control" unique_id=1458225762]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uv781")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2082398834]
 layout_mode = 1
@@ -21,7 +25,7 @@ offset_right = 966.5
 offset_bottom = 552.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.039215688, 0.11764706, 0.16862746, 1)
 
 [node name="Label" type="Label" parent="ColorRect" unique_id=1218563264]
 layout_mode = 1
@@ -36,6 +40,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.22745098, 1, 0.53333336, 1)
+theme_override_fonts/font = ExtResource("2_5auei")
 theme_override_font_sizes/font_size = 56
 text = "Score:
 High Score:"
