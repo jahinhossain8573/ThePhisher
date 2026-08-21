@@ -11,8 +11,7 @@ var ai_type : int = 0
 # Navigation Agent
 @onready var nav_mesh : NavigationAgent3D = $NavigationAgent3D
 
-# Mesh
-@onready var mesh_instance_3d : MeshInstance3D = $MeshInstance3D
+
 
 # AI State of Motion
 var is_moving : bool = true
@@ -32,14 +31,24 @@ func _ready() -> void:
 	nav_mesh.target_position.x += randf() * 2 * (-1) ** randi_range(1, 2)
 	nav_mesh.target_position.z += randf() * 2 * (-1) ** randi_range(1, 2)
 	
+	$Sprite3D.global_position.y = $Sprite3D.global_position.y + randi_range(-1, 1)
+	
 	ai_type = target_node.assembly_points[randi_range(0, 5)]
 	match ai_type:
 		0:
-			mesh_instance_3d.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/AI 0.tres").duplicate())
+			$Sprite3D/SubViewport/GenAlpha.visible = true
+			$Sprite3D/SubViewport/GenAlpha2.visible = false
+			$Sprite3D/SubViewport/GenAlpha3.visible = false
 		1:
-			mesh_instance_3d.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/AI 1.tres").duplicate())
+			#mesh_instance_3d.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/AI 1.tres").duplicate())
+			$Sprite3D/SubViewport/GenAlpha.visible = false
+			$Sprite3D/SubViewport/GenAlpha2.visible = true
+			$Sprite3D/SubViewport/GenAlpha3.visible = false
 		2:
-			mesh_instance_3d.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/AI 2.tres").duplicate())
+			#mesh_instance_3d.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/AI 2.tres").duplicate())
+			$Sprite3D/SubViewport/GenAlpha.visible = false
+			$Sprite3D/SubViewport/GenAlpha2.visible = false
+			$Sprite3D/SubViewport/GenAlpha3.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

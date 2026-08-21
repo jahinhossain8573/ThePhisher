@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bvlae737bbku1"]
+
+[ext_resource type="PackedScene" uid="uid://fpjb6k2fo6p0" path="res://Jahin's Part/Art/3D Assets/The Phisher/The Phisher.glb" id="1_8je8o"]
+[ext_resource type="Shader" uid="uid://bxbhs1i3i1qm2" path="res://Jahin's Part/Art/Shader/stylized.gdshader" id="2_2mmuy"]
+[ext_resource type="Texture2D" uid="uid://36b3uu86fgof" path="res://Jahin's Part/Art/3D Assets/The Phisher/The Phisher_0.png" id="3_alt25"]
+[ext_resource type="Texture2D" uid="uid://cf2c0ukyhvm0c" path="res://Jahin's Part/Art/3D Assets/The Phisher/DefaultMaterial_normal.png" id="4_4luhs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpff1"]
+render_priority = 0
+shader = ExtResource("2_2mmuy")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_alt25")
+shader_parameter/albedo_affect = 0.0
+shader_parameter/use_stepped = true
+shader_parameter/steps = 3.0
+shader_parameter/step_smoothness = 0.3
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/normal_texture = ExtResource("4_4luhs")
+shader_parameter/use_rim = true
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/rim_amount = 2.0
+shader_parameter/rim_smoothness = 0.2
+shader_parameter/rim_mask_shadow = 1.0
+shader_parameter/rim_blend = 1.0
+shader_parameter/use_pattern = true
+shader_parameter/pattern_uv_mode = 2
+shader_parameter/pattern_tiling = 32.0
+shader_parameter/pattern_amount = 0.5
+shader_parameter/pattern_smoothness = 0.5
+shader_parameter/pattern_blend = 0.2
+
+[node name="The Phisher" unique_id=1446471469 instance=ExtResource("1_8je8o")]
+
+[node name="Cylinder2" parent="Cylinder" parent_id_path=PackedInt32Array(1530418547) index="0" unique_id=740609763]
+surface_material_override/0 = SubResource("ShaderMaterial_dpff1")

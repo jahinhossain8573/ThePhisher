@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://du02n288qlodl" path="res://Jahin's Part/Assets/UI/Slider Bar/Slider Bar.png" id="1_ghe0t"]
 [ext_resource type="Script" uid="uid://c6dg7k07d88tj" path="res://Jahin's Part/Secondary Scenes/qte.gd" id="1_idk24"]
 [ext_resource type="Texture2D" uid="uid://cv6ioh0p03eck" path="res://Jahin's Part/Assets/UI/Buttons/Spacebar.png" id="2_gmc0p"]
+[ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="4_qfneq"]
 
 [node name="QTE" type="Control" unique_id=64287262]
 layout_mode = 3
@@ -62,3 +63,19 @@ color = Color(1, 0, 0, 1)
 position = Vector2(296.5, 17)
 scale = Vector2(0.07150002, 0.047000017)
 texture = ExtResource("1_ghe0t")
+
+[node name="Label" type="Label" parent="Panel" unique_id=36997399]
+visible = false
+layout_mode = 0
+offset_left = 50.5
+offset_top = 112.0
+offset_right = 307.5
+offset_bottom = 180.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, -1)
+theme_override_colors/font_color = Color(0.2901961, 1, 0.53333336, 1)
+theme_override_colors/font_outline_color = Color(1, 0.6901961, 0.1254902, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_qfneq")
+theme_override_font_sizes/font_size = 72
+text = "Gen Alpha"

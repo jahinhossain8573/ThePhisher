@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://fthahhirv4xi"]
+
+[ext_resource type="Texture2D" uid="uid://caidwfqqiob3i" path="res://Jahin's Part/Art/AI/Gen Alpha.png" id="1_jowes"]
+[ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="2_8xtpa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5wgt"]
+font = ExtResource("2_8xtpa")
+font_size = 72
+font_color = Color(0.22745098, 1, 0.53333336, 1)
+
+[node name="GenAlpha" type="Control" unique_id=1028101779]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="." unique_id=55481655]
+
+[node name="TextureRect" type="TextureRect" parent="Node2D" unique_id=541502534]
+offset_left = 26.5
+offset_top = 2.0
+offset_right = 226.5
+offset_bottom = 202.0
+texture = ExtResource("1_jowes")
+
+[node name="Label" type="Label" parent="Node2D" unique_id=2106482205]
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 271.0
+offset_bottom = 269.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Gen-Alpha"
+label_settings = SubResource("LabelSettings_m5wgt")

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6ioh0p03eck"
-path.s3tc="res://.godot/imported/Spacebar.png-909de42796626c4b0b210a84d37c0152.s3tc.ctex"
+uid="uid://cf2c0ukyhvm0c"
+path.s3tc="res://.godot/imported/DefaultMaterial_normal.png-ff4cbc8f2dd6b861a0fe5e776997c893.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Jahin's Part/Assets/UI/Buttons/Spacebar.png"
-dest_files=["res://.godot/imported/Spacebar.png-909de42796626c4b0b210a84d37c0152.s3tc.ctex"]
+source_file="res://Jahin's Part/Art/3D Assets/The Phisher/DefaultMaterial_normal.png"
+dest_files=["res://.godot/imported/DefaultMaterial_normal.png-ff4cbc8f2dd6b861a0fe5e776997c893.s3tc.ctex"]
 
 [params]
 

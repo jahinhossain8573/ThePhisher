@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://caqtwgbsflm12" path="res://Jahin's Part/Secondary Scenes/UI/Try Again.tscn" id="4_tnanf"]
 [ext_resource type="PackedScene" uid="uid://cnhb8w1gp5ijf" path="res://Jahin's Part/Secondary Scenes/UI/High Score Display.tscn" id="4_yg1us"]
 [ext_resource type="PackedScene" uid="uid://c45d5xn8retkf" path="res://Jahin's Part/Secondary Scenes/QTE.tscn" id="5_jkuvi"]
-[ext_resource type="PackedScene" uid="uid://cn0d3evsp4oii" path="res://Jahin's Part/Secondary Scenes/UI/Clickbait Selection.tscn" id="5_yd5p6"]
 [ext_resource type="PackedScene" uid="uid://bwvmtqemchcm5" path="res://Jahin's Part/Secondary Scenes/UI/session_end.tscn" id="6_rey2a"]
 [ext_resource type="Texture2D" uid="uid://bvni7xmm8gcqu" path="res://Jahin's Part/Art/Background/Background.jpg" id="7_rgjpa"]
 [ext_resource type="Texture2D" uid="uid://dd2tl3rciihe1" path="res://Jahin's Part/Art/Divider/Divider.png" id="8_a1khd"]
 [ext_resource type="PackedScene" uid="uid://4uv3pa5g6hxl" path="res://Jahin's Part/Secondary Scenes/retro_pc.tscn" id="9_dpff1"]
 [ext_resource type="FontFile" uid="uid://b5ot066vhcsee" path="res://Jahin's Part/Fonts/Pixelbasel.ttf" id="13_3ws1g"]
+[ext_resource type="Texture2D" uid="uid://cv6ioh0p03eck" path="res://Jahin's Part/Assets/UI/Buttons/Spacebar.png" id="13_dpff1"]
+[ext_resource type="PackedScene" uid="uid://c1itrx17im0xs" path="res://Jahin's Part/Secondary Scenes/Spacebar.tscn" id="14_qct0l"]
 [ext_resource type="PackedScene" uid="uid://fpjb6k2fo6p0" path="res://Jahin's Part/Art/3D Assets/The Phisher/The Phisher.glb" id="15_ijmp4"]
 [ext_resource type="Texture2D" uid="uid://5kjxglvsooba" path="res://Jahin's Part/Art/Background/Background.png" id="16_dpff1"]
 
@@ -25,9 +26,6 @@ viewport_path = NodePath("Camera3D/UI Manager/Sprite3D1/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5n18k"]
 viewport_path = NodePath("Camera3D/UI Manager/Sprite3D2/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_mjte6"]
-viewport_path = NodePath("Camera3D/UI Manager/Sprite3D3/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rey2a"]
 viewport_path = NodePath("Camera3D/UI Manager/Sprite3D4/SubViewport")
@@ -64,18 +62,6 @@ viewport_path = NodePath("Path3D/PathFollow3D/Clickbait/Minigame/SubViewport")
 [sub_resource type="Animation" id="Animation_rey2a"]
 resource_name = "clickbait_select"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/UI Manager/Sprite3D3:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_tnanf"]
 length = 0.5
@@ -94,22 +80,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/UI Manager/Sprite3D3:modulate")
+tracks/1/path = NodePath("Camera3D/UI Manager/Sprite3D4:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/UI Manager/Sprite3D4:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -214,19 +188,6 @@ transparent_bg = true
 
 [node name="TryAgain" parent="Camera3D/UI Manager/Sprite3D2/SubViewport" unique_id=2115166697 instance=ExtResource("4_tnanf")]
 
-[node name="Sprite3D3" type="Sprite3D" parent="Camera3D/UI Manager" unique_id=1797443852]
-transform = Transform3D(1, 0, 8.33128e-24, 0, 1, 0, 5.952429e-26, 0, 1, 3.7857358, 4.991994, 0.013273776)
-texture = SubResource("ViewportTexture_mjte6")
-
-[node name="SubViewport" type="SubViewport" parent="Camera3D/UI Manager/Sprite3D3" unique_id=220757587]
-transparent_bg = true
-
-[node name="ClickbaitSelection" parent="Camera3D/UI Manager/Sprite3D3/SubViewport" unique_id=233694335 instance=ExtResource("5_yd5p6")]
-offset_left = 704.0
-offset_top = 284.0
-offset_right = 704.0
-offset_bottom = 284.0
-
 [node name="Sprite3D4" type="TextureRect" parent="Camera3D/UI Manager" unique_id=1059147053]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -293,7 +254,7 @@ texture = ExtResource("8_a1khd")
 curve = SubResource("Curve3D_1lpa2")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=850277638]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72629035, 0)
+transform = Transform3D(1, 0, 0, 0, 0.15838423, 0, 0, 0, 1, 0, 0.04988563, 0)
 material_override = SubResource("StandardMaterial3D_dpff1")
 autosmooth = true
 polygon = PackedVector2Array(0.08807872, -0.0058644414, 0.07608619, 0.96544445, 0.13803165, 0.97000325, 0.14449996, -0.00051796436)
@@ -314,9 +275,10 @@ smooth_faces = true
 transform = Transform3D(-0.9999355, 0, 0.011107337, 0, 1, 0, -0.011107337, 0, -0.9999355, -0.011823654, 0, 1.4844834)
 progress = 4.10409
 
-[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 node_paths=PackedStringArray("qte") instance=ExtResource("2_1lpa2")]
+[node name="Clickbait" parent="Path3D/PathFollow3D" unique_id=1294931994 node_paths=PackedStringArray("qte", "spacebar") instance=ExtResource("2_1lpa2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10727569, 0.21539995, -0.0012515783)
 qte = NodePath("Minigame/SubViewport/QTE")
+spacebar = NodePath("Spacebar")
 
 [node name="Minigame" type="Sprite3D" parent="Path3D/PathFollow3D/Clickbait" unique_id=1971641493]
 transform = Transform3D(-0.3199803, -0.0035543577, 1.553659e-10, 0, -1.3987644e-08, -0.32, 0.0035543577, -0.3199803, 1.3986781e-08, -0.0015765727, 0, -0.6025549)
@@ -325,34 +287,36 @@ texture = SubResource("ViewportTexture_jkuvi")
 [node name="SubViewport" type="SubViewport" parent="Path3D/PathFollow3D/Clickbait/Minigame" unique_id=1440306141]
 transparent_bg = true
 
-[node name="QTE" parent="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport" unique_id=64287262 instance=ExtResource("5_jkuvi")]
+[node name="QTE" parent="Path3D/PathFollow3D/Clickbait/Minigame/SubViewport" unique_id=64287262 node_paths=PackedStringArray("clickbait") instance=ExtResource("5_jkuvi")]
+clickbait = NodePath("../../..")
+
+[node name="Spacebar" type="Sprite3D" parent="Path3D/PathFollow3D/Clickbait" unique_id=1996603600]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0.011223055, 0, 1.0103528)
+visible = false
+texture = ExtResource("13_dpff1")
+
+[node name="SubViewport" type="SubViewport" parent="Path3D/PathFollow3D/Clickbait/Spacebar" unique_id=581974609]
+
+[node name="Spacebar" parent="Path3D/PathFollow3D/Clickbait/Spacebar/SubViewport" unique_id=1104675721 instance=ExtResource("14_qct0l")]
 
 [node name="AI Manager" type="Node3D" parent="." unique_id=1686914240]
 visible = false
 
 [node name="AI Assembly Point 0" parent="AI Manager" unique_id=1689755366 instance=ExtResource("4_csu50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5858526, 9.536743e-07, 3.6095545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.379349, 1.4305115e-06, 0.83727264)
 assembly_points = Array[int]([0, 0, 0, 1, 1, 2])
 
 [node name="AI Assembly Point 1" parent="AI Manager" unique_id=950329880 instance=ExtResource("4_csu50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7330132, -9.536743e-07, 4.1953025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7678754, -9.536743e-07, 3.6964152)
 assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
 
-[node name="AI Assembly Point 2" parent="AI Manager" unique_id=1121818349 instance=ExtResource("4_csu50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1507077, 0, 0.20612937)
-assembly_points = Array[int]([0, 0, 1, 2, 2, 2])
-
 [node name="AI Assembly Point 3" parent="AI Manager" unique_id=2050814509 instance=ExtResource("4_csu50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3830814, 0, 3.9196346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4460332, 0, 3.6568978)
 assembly_points = Array[int]([0, 0, 0, 1, 1, 2])
 
 [node name="AI Assembly Point 4" parent="AI Manager" unique_id=1883612398 instance=ExtResource("4_csu50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.220927, 0, 0.9452903)
 assembly_points = Array[int]([0, 0, 1, 2, 2, 2])
-
-[node name="AI Assembly Point 5" parent="AI Manager" unique_id=726262503 instance=ExtResource("4_csu50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3315873, 0, -0.4905523)
-assembly_points = Array[int]([0, 1, 1, 1, 2, 2])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1972434594]
 libraries/ = SubResource("AnimationLibrary_rey2a")

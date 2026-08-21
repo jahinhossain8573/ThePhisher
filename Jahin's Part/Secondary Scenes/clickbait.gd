@@ -5,7 +5,9 @@ class_name Clickbait
 # Gets the minigame
 @export var qte : qte = null
 
-@onready var mesh: MeshInstance3D = $Area3D/MeshInstance3D
+@export var spacebar : Sprite3D = null
+
+#@onready var mesh: MeshInstance3D = $Area3D/MeshInstance3D
 
 var initial_position : Vector3 = Vector3.ZERO
 
@@ -35,12 +37,23 @@ func _process(delta: float) -> void:
 	if ai_array.size() == 0:
 		qte.disable()
 		can_enable_qte = false
+		$Area3D/Sprite3D.modulate.a = 1
+		$OmniLight3D.light_energy = 0
+		spacebar.visible = false
+
 	else:
 		can_enable_qte = true
 		#qte.enable()
-		
+		$Area3D/Sprite3D.modulate.a = 0.5
+		$OmniLight3D.light_energy = 4
+		if qte.enabled == false:
+			spacebar.visible = true
+
 	if Input.is_action_just_pressed("interaction") and can_enable_qte:
 		qte.enable()
+		spacebar.visible = false
+	
+	global_rotation.y = 0
 
 func successful_qt():
 	ai_array[0].queue_free()
@@ -51,17 +64,11 @@ func unsuccessful_qt():
 	ai_array[0]._detected_clickbait()
 	ai_array.remove_at(0)
 
-func type_change():
-	match type:
+func randomise():
+	match randi_range(0, 2):
 		0:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 0.tres"))
+			$Area3D/Sprite3D.texture = load("res://Jahin's Part/Art/Clickbait/Discord Nitro Scam.png")
 		1:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 1.tres"))
+			$Area3D/Sprite3D.texture = load("res://Jahin's Part/Art/Clickbait/Free iPhone Scam.png")
 		2:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 2.tres"))
-		3:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 3.tres"))
-		4:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 4.tres"))
-		5:
-			mesh.mesh.surface_set_material(0, load("res://Jahin's Part/Materials/Clickbait 5.tres"))
+			$Area3D/Sprite3D.texture = load("res://Jahin's Part/Art/Clickbait/Free Steam Gift Card Scam.png")

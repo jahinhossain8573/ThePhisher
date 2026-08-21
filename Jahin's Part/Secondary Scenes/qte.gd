@@ -11,6 +11,8 @@ signal QuickTimeFailure
 # Minigame Status
 var enabled : bool = false
 
+@export var clickbait : Clickbait = null
+
 # Declaring markers as variables
 @onready var start_marker: Marker2D = $Panel/StartMarker
 @onready var end_marker: Marker2D = $Panel/EndMarker
@@ -39,6 +41,16 @@ var trigger_zone_length : int = 0
 func _ready() -> void:
 	disable()
 	qte_bar_length = end_marker.global_position.x - start_marker.global_position.x
+
+func _process(delta: float) -> void:
+	if ai_array != []:
+		match ai_array[0].ai_type:
+			0:
+				$Panel/Label.text = "Gen Alpha"
+			1:
+				$Panel/Label.text = "Gen Z"
+			2:
+				$Panel/Label.text = "Boomer"
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:

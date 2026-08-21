@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6ioh0p03eck"
-path.s3tc="res://.godot/imported/Spacebar.png-909de42796626c4b0b210a84d37c0152.s3tc.ctex"
+uid="uid://cxkhx4u1jlj01"
+path.s3tc="res://.godot/imported/Discord Nitro Scam.png-20fd73c8f984e27e8da77e0963a6f9c6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Jahin's Part/Assets/UI/Buttons/Spacebar.png"
-dest_files=["res://.godot/imported/Spacebar.png-909de42796626c4b0b210a84d37c0152.s3tc.ctex"]
+source_file="res://Jahin's Part/Art/Clickbait/Discord Nitro Scam.png"
+dest_files=["res://.godot/imported/Discord Nitro Scam.png-20fd73c8f984e27e8da77e0963a6f9c6.s3tc.ctex"]
 
 [params]
 

@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://chf2rep3dbx27"]
 
 [ext_resource type="Script" uid="uid://wcepcrdxhelv" path="res://Jahin's Part/Secondary Scenes/ai.gd" id="1_vet6d"]
+[ext_resource type="PackedScene" uid="uid://c78emp80pwloc" path="res://Jahin's Part/Art/AI/Boomer.tscn" id="2_82pkr"]
+[ext_resource type="PackedScene" uid="uid://fthahhirv4xi" path="res://Jahin's Part/Art/AI/Gen Alpha.tscn" id="2_slho0"]
+[ext_resource type="PackedScene" uid="uid://bojbf62rsv2as" path="res://Jahin's Part/Art/AI/Gen Z.tscn" id="3_q6e1g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bo1jp"]
 size = Vector3(0.099853516, 0.101623535, 0.10076904)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0wn3v"]
-resource_local_to_scene = true
-size = Vector3(0.2, 0.2, 0.2)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_0wn3v"]
 radius = 0.2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0wn3v"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="AI" type="CharacterBody3D" unique_id=740061542]
 collision_layer = 2
@@ -20,9 +22,6 @@ script = ExtResource("1_vet6d")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0007324219, -0.0004272461, -0.0004272461)
 shape = SubResource("BoxShape3D_bo1jp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=881045235]
-mesh = SubResource("BoxMesh_0wn3v")
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1410450871]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2048069382]
@@ -30,5 +29,20 @@ mesh = SubResource("BoxMesh_0wn3v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=785995115]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_0wn3v")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1144792798]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, 0.3, 0, -0.3, -1.3113417e-08, 0.3126702, 0.4374429, 0.27602106)
+texture = SubResource("ViewportTexture_0wn3v")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=166365968]
+transparent_bg = true
+
+[node name="GenAlpha3" parent="Sprite3D/SubViewport" unique_id=1028101779 instance=ExtResource("2_82pkr")]
+visible = false
+
+[node name="GenAlpha2" parent="Sprite3D/SubViewport" unique_id=1711944537 instance=ExtResource("3_q6e1g")]
+visible = false
+
+[node name="GenAlpha" parent="Sprite3D/SubViewport" unique_id=1798734479 instance=ExtResource("2_slho0")]
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
